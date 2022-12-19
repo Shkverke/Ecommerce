@@ -1,0 +1,46 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+<h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+  <div class="form-floating">
+    <input type="email"
+           class="form-control"
+           id="floatingFirstName"
+           placeholder="name@example.com"
+           formControlName="firstName">
+    <label for="floatingFirstName">First name</label>
+  </div>
+  <br>
+  <div class="form-floating">
+    <input type="email"
+           class="form-control"
+           id="floatingLastName"
+           placeholder="name@example.com"
+           formControlName="lastName">
+    <label for="floatingLastName">Last name</label>
+  </div>
+  <br>
+  <div class="form-floating">
+    <input type="email"
+           class="form-control"
+           id="floatingEmail"
+           placeholder="name@example.com"
+           formControlName="email">
+    <label for="floatingEmail">Email address</label>
+  </div>
+  <br>
+  <div class="form-floating">
+    <input type="email"
+           class="form-control"
+           id="floatingInput1"
+           placeholder="name@example.com"
+           formControlName="password">
+    <label for="floatingInput1">Password</label>
+  </div>
+  <br>
+  <div class="form-floating">
+    <input type="ConfirmPassword" class="form-control" id="floatingConfirmPassword" placeholder="Password">
+    <label for="floatingConfirmPassword">Confirm password</label>
+  </div>
+  <br>
+  <button class="w-100 btn btn-lg btn-dark" type="submit">Sign up</button>
+</form>

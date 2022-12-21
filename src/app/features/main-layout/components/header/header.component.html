@@ -1,8 +1,9 @@
+<script src="../../main-layout.component.ts"></script>
 <header class="p-2 mb-3 border-bottom">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <div class="logo">
-        <img alte="logo" class="logo" src="assets/images/logo.png">
+        <img alt="logo" class="logo" src="assets/images/logo.png">
       </div>
       <a class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none" href="/">
         <svg aria-label="Bootstrap" class="bi me-2" height="32" role="img" width="40">
@@ -11,19 +12,43 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a class="nav-link px-2 link-secondary" href="#">Home</a></li>
-        <li><a class="nav-link px-2 link-dark" href="#">Products</a></li>
+        <li><a class="nav-link px-2 link-secondary" routerLink="/">Home</a></li>
+        <li><a class="nav-link px-2 link-dark" routerLink="/products">Products</a></li>
       </ul>
 
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
         <input aria-label="Search" class="form-control" placeholder="Search..." type="search">
       </form>
 
-      <div class="text-end">
-        <button class="btn btn-dark" type="button" routerLink="/auth/login">Login</button>
+      <ng-container *ngIf="isAuth; else notAuth">
+        <div class="cart">
+          <a aria-expanded="false" class="d-block link-dark text-decoration-none" routerLink="/cart">
+            <img alt="cart image" height="32" src="../../../../../assets/images/cart.svg" width="32" class="gudu">
+            <span class="cart-count rounded-pill">{{cartCount$ | async}}</span>
+          </a>
+        </div>
+        <div class="flex-shrink-0 dropdown">
+          <a aria-expanded="false" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+             href="#" id="dropdownUser2">
+            <img alt="mdo" height="32" src="assets/images/user.png" width="32">
+          </a>
+          <ul aria-labelledby="dropdownUser2" class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" routerLink="/orders">Orders</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#" (click)="signOut()" >Sign out</a></li>
+          </ul>
+        </div>
+      </ng-container>
 
-        <button class="btn btn-dark" type="button" routerLink="/auth/register">Sign-up</button>
-      </div>
+      <ng-template #notAuth>
+        <div class="text-end">
+          <button class="btn btn-dark" routerLink="/auth/login" type="button">Login</button>
+          <button class="btn btn-dark" routerLink="/auth/register" type="button">Sign-up</button>
+        </div>
+
+      </ng-template>
     </div>
   </div>
 </header>

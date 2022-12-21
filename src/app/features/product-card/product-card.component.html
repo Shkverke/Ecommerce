@@ -1,17 +1,22 @@
 <div class="card">
   <div class="container">
   <div class="image">
-    <img src="{{product.image}}">
+    <img alt="product image" src="{{product.image}}">
   </div>
   <div class="product">
     <p>here must be category</p>
     <h1>{{product.name}}</h1>
-    <h2>{{product.price | currency}}</h2>
     <p class="desc">{{product.description}}</p>
-    <div class="buttons">
-      <button class="add" (click)="addToCart(product)">Add to Cart</button>
+    <div class="price-box d-flex j">
+      <div class="price w-50 justify-content-center pt-3">
+        <h2>{{product.price | currency}}</h2>
     </div>
+      <div class="cart w-50">
+        <button class="btn btn-dark" (click)="addToCart()">Add to cart</button>
+      </div>
+
   </div>
 </div>
 </div>
 
+</div>

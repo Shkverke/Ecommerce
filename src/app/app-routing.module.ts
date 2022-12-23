@@ -26,7 +26,7 @@ children: [
     loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule)
   },
   {
-    path: 'orders',
+    path: 'order',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/orders/orders.module').then(m => m.OrdersModule)
   },

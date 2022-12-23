@@ -1,21 +1,36 @@
-<table class="table table-hover mx-auto">
+<table *ngIf="cartItems.length; else nothingHere" class="table table-hover">
   <thead>
-  <tr>
+  <tr >
     <th scope="col">Product</th>
     <th scope="col">Price</th>
     <th scope="col">Quantity</th>
     <th scope="col">Total</th>
-    <th scope="col">Button</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let product of cartItems">
     <td>{{product.item.name}}</td>
-    <td>{{product.item.price}}</td>
+    <td>{{product.item.price | currency}}</td>
     <td>{{product.quantity}}</td>
-    <td>{{product.total}}</td>
-    <td><button class="btn btn-danger" (click)="removeFromCart(product)">Remove</button></td>
+    <td>{{product.total | currency}}</td>
+    <td><button class="btn btn-1 btn-danger" (click)="removeFromCart(product)">X</button></td>
   </tr>
+  <br>
+  <div  class="row d-grid">
+    <div class="col-6">
+      <h3 class="total">Total Price: {{cartSum | currency}}</h3>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-dark" (click)="checkout()">Checkout</button>
+    </div>
+  </div>
   </tbody>
-
 </table>
+
+<ng-template #nothingHere>
+  <div class="text-center mt-5" >
+    <h3 class="total">Your cart is empty !</h3>
+    <img alt="empty cart" class="img-fluid w-25 mt-5" src="assets/images/emtyCart.png">
+  </div>
+</ng-template>

@@ -1,0 +1,16 @@
+<table class="table table-hover">
+<thead>
+<tr>
+  <th scope="col">Order Date</th>
+  <th scope="col">Price</th>
+  <th scope="col">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let order of orders$ | async">
+  <td>{{order.createdAt | date}}</td>
+  <td> {{order.subTotal | currency}} </td>
+  <td>{{order.pending}}</td>
+<br>
+</tbody>
+</table>

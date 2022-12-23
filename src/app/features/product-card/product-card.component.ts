@@ -25,10 +25,11 @@ export class ProductCardComponent {
    {
     if (!this.authService.token) {
       this.router.navigate(['/auth/login']);
+    } else{
+      this.cartService.addToCart({
+        productId: this.product.id,
+        quantity: 1
+      }).subscribe()
     }
-    this.cartService.addToCart({
-      productId: this.product.id,
-      quantity: 1
-    }).subscribe()
   }
 }

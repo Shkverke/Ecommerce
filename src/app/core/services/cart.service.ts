@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "./base.service";
-import {Cart, CartPayload} from "../interfaces/cart";
+import {Cart} from "../interfaces/cart";
 import {BehaviorSubject, tap} from "rxjs";
 
 @Injectable({
@@ -16,19 +16,24 @@ export class CartService extends BaseService {
     return this.get('cart')
       .pipe(
         tap((cart: any) => {
-            this.cartCount.next(cart.length);
+            this.cartCount.next(cart.reduce((acc: any, item: { quantity: number; }) => acc + item.quantity, 0));
           }
         )
       )
   }
 
-  addToCart(payload: CartPayload) {
+  addToCart(payload: {
+    productId: string;
+    quantity: number;
+  }) {
     return this.post<Cart>('cart', payload)
       .pipe(
         tap(() => {
-          this.cartCount.next(this.cartCount.value + payload.quantity);
-        })
-      )
+          this.cartCount.next(this.cartCount.value + 1);
+          console.log(this.cartCount.value);
+        }),
+
+  )
   }
 
 

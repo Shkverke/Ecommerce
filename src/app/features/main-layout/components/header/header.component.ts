@@ -8,12 +8,14 @@ import {Observable} from "rxjs";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
   constructor(private authService: AuthService,
               private cartService: CartService) {
   }
 
   cartCount$: Observable<number> = this.cartService.cartCount$;
-
+  User: any = localStorage.getItem('user');
+  UserInfo = JSON.parse(this.User);
 
   get isAuth() {
     return this.authService.token;
@@ -23,8 +25,6 @@ export class HeaderComponent {
     return this.authService.user;
 
   }
-
-
 
 
   signOut() {

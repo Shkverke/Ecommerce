@@ -22,6 +22,15 @@ header {
     height: 30px;
   }
 
+  .user {
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    font-size: 15px ;
+  }
+
 }
 
 .cart {
@@ -33,13 +42,11 @@ header {
   margin-right: 10px;
 
 
-
-
   .cart-count {
     position: absolute;
     top: -5px;
     right: -5px;
-    background-color: #ff0000 ;
+    background-color: #ff0000;
     color: black;
     font-weight: bold;
     border-radius: 50%;

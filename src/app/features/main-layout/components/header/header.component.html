@@ -33,13 +33,16 @@
             <img alt="mdo" height="32" src="assets/images/user.png" width="32">
           </a>
           <ul aria-labelledby="dropdownUser2" class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" routerLink="/manager">Content Manager</a></li>
+            <li><a class="dropdown-item" routerLink="/manager/products">Content Manager</a></li>
             <li><a class="dropdown-item" routerLink="/order">Orders</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="#" (click)="signOut()" >Sign out</a></li>
           </ul>
+        </div>
+        <div class="user d-block">
+          <strong>Welcome Back {{UserInfo.firstName}} !</strong>
         </div>
       </ng-container>
 

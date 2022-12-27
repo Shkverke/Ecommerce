@@ -44,14 +44,8 @@ export class ProductsComponent implements OnInit {
   }
 
   searchHandle(search: string) {
-
-    if(search.length > 1) {
       this.search = search
-      this.getProducts()
-    } else {
-      this.search = null
+      this.categoryId = undefined
       this.getProducts()
     }
-
-  }
 }

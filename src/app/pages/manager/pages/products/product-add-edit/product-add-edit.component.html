@@ -1,29 +1,46 @@
+<div class="product-layout">
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <div class="form-group">
+  <div class="form-group mt-5">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+    <div class="mat-error mt-2 error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+      <div *ngIf="form.get('name')?.errors?.['required']">Name is required</div>
+    </div>
   </div>
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="description">Description</label>
     <textarea type="text" class="form-control" id="description" placeholder="Description"
               formControlName="description"></textarea>
+    <div class="mat-error mt-2 error" *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
+      <div *ngIf="form.get('description')?.errors?.['required']">Description is required</div>
+    </div>
   </div>
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="image">Image url</label>
     <input type="text" class="form-control" id="image" placeholder="Image url" formControlName="image">
+    <div class="mat-error mt-2 error" *ngIf="form.get('image')?.invalid && form.get('image')?.touched">
+      <div *ngIf="form.get('image')?.errors?.['required']">Image is required</div>
+    </div>
   </div>
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="description">Category</label>
     <select class="form-select" formControlName="categoryId">
       <option *ngFor="let category of categories$ | async" [value]="category.id">
         {{category.name}}
       </option>
     </select>
+    <div class="mat-error mt-2 error" *ngIf="form.get('categoryId')?.invalid && form.get('categoryId')?.touched">
+      <div *ngIf="form.get('categoryId')?.errors?.['required']">Category is required</div>
+    </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="price">Price</label>
-    <input type="number" class="form-control" id="price" placeholder="price" formControlName="price">
+    <input type="number" class="form-control" id="price" placeholder="Price" formControlName="price">
+    <div class="mat-error mt-2 error" *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+      <div *ngIf="form.get('price')?.errors?.['required']">Price is required</div>
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  <button type="submit" class="btn btn-dark mt-3">Submit</button>
 </form>
+</div>

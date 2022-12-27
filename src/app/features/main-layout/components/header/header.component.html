@@ -16,14 +16,10 @@
         <li><a class="nav-link px-2 link-dark" routerLink="/products">Products</a></li>
       </ul>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input aria-label="Search" class="form-control" placeholder="Search..." type="search">
-      </form>
-
       <ng-container *ngIf="isAuth; else notAuth">
         <div class="cart">
           <a aria-expanded="false" class="d-block link-dark text-decoration-none" routerLink="/cart">
-            <img alt="cart image" height="32" src="../../../../../assets/images/cart.svg" width="32" class="gudu">
+            <img alt="cart image" height="32" src="../../../../../assets/images/cart.svg" width="32">
             <span class="cart-count rounded-pill">{{cartCount$ | async}}</span>
           </a>
         </div>

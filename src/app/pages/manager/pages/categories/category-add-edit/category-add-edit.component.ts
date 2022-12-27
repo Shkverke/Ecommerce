@@ -39,6 +39,7 @@ export class CategoryAddEditComponent implements OnInit {
   }
 
   submit() {
+    this.form.markAllAsTouched();
     if (this.form.invalid) {
       return
     }

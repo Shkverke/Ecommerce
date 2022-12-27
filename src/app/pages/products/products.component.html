@@ -1,7 +1,7 @@
 <div class="d-flex gap-5">
   <div class="wrap">
     <h1 class="text-center"><strong>Choose Category</strong></h1>
-    <ul >
+    <ul>
       <li [routerLink]="['/products']">All</li>
       <li *ngFor="let category of categories$ | async"
           [queryParams]="{category: category.id}"
@@ -9,32 +9,6 @@
         {{category.name}}</li>
     </ul>
 
-
-    <!--    <div class="flex-shrink-0 dropdown">-->
-    <!--      <a aria-expanded="false" class="d-block link-dark text-decoration-none dropdown-toggle category-list" data-bs-toggle="dropdown"-->
-    <!--         id="dropdownUser2">Category List-->
-    <!--      </a>-->
-    <!--      <ul aria-labelledby="dropdownUser2" class="dropdown-menu text-small shadow">-->
-    <!--        <li *ngFor="let category of categories$ | async">-->
-    <!--          <a class="dropdown-item" routerLink="/products" [queryParams]="{category: category.id}">{{category.name}}</a>-->
-    <!--        </li>-->
-    <!--        <li>-->
-    <!--          <hr class="dropdown-divider">-->
-    <!--        </li>-->
-    <!--        <li><a class="dropdown-item" routerLink='/products'>All</a></li>-->
-    <!--      </ul>-->
-    <!--    </div>-->
-    <!--    <div class="list-group">-->
-    <!--      <a [routerLink]="['/products']"-->
-    <!--         class="list-group-item list-group-item-action">All</a>-->
-    <!--          <a *ngFor="let category of categories$ | async"-->
-    <!--             [routerLink]="['/products']"-->
-    <!--             [queryParams]="{category: category.id}"-->
-    <!--             routerLinkActive="active"-->
-    <!--             class="list-group-item list-group-item-action">-->
-    <!--            {{category.name}}-->
-    <!--          </a>-->
-    <!--    </div>-->
   </div>
 
   <div class="flex-fill">
@@ -44,8 +18,14 @@
     </div>
     <div>
     </div>
-    <div class="product-items">
-      <app-product-card *ngFor="let product of products;  let i = index" [product]="product"></app-product-card>
+    <div class="product-items" *ngIf="products.length; else noProducts">
+      <app-product-card *ngFor="let product of products"[product]="product"></app-product-card>
     </div>
+    <ng-template #noProducts>
+      <div class="no-product">
+        <h3 class="total">No products found !</h3>
+          <img class="img-fluid w-25 mt-5" alt="product not found" src="assets/images/search.png">
+      </div>
+    </ng-template>
   </div>
 </div>

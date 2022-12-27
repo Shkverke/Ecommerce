@@ -1,7 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ProductService} from "../../core/services";
-import {Product} from "../../core/interfaces";
-import {Subject, takeUntil} from "rxjs";
+import {Category, Product} from "../../core/interfaces";
+import {Observable, Subject, takeUntil} from "rxjs";
+import {CategoryService} from "../../core/services/category.service";
 
 
 @Component({
@@ -14,8 +15,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   products: Product[] = []
   sub$ = new Subject()
 
+  categories$: Observable<Category[]>  = this.categoryService.getAll()
 
-  constructor(private productService: ProductService) {
+
+  constructor(private productService: ProductService,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {

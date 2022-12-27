@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import Validation from "./validator/confirm-password.validator";
+import {CustomValidators} from "./validator/confirm-password.validator";
 import {AuthService} from "../../../../core/services";
 import {Router} from "@angular/router";
 
@@ -18,11 +18,11 @@ export class RegisterComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required]),
     },
-    {
-      validators: [Validation.match('password', 'confirmPassword')],
 
-    });
+  [CustomValidators.MatchValidator('password', 'confirmPassword')]
 
+
+  )
   constructor(private authService: AuthService,
               private router: Router
   ) {
@@ -31,6 +31,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  get passwordMatchError() {
+    return (
+      this.form.getError('mismatch') &&
+      this.form.get('confirmPassword')?.touched
+    );
+  }
+
 
   submit() {
     this.form.markAllAsTouched();

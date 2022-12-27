@@ -49,6 +49,7 @@ export class ProductAddEditComponent implements OnInit {
   }
 
   submit() {
+    this.form.markAllAsTouched();
     if (this.form.invalid) {
       return
     }

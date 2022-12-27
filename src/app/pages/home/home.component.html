@@ -1,6 +1,26 @@
 <div>
-<div class="product-items">
-  <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+  <div class="banner">
+    <img src="https://wbminternational.pk/media/mf_webp/jpg/media/A-Plus/6303C/Shining-Sponge-Black-2.webp">
+  </div>
 
-</div>
+
+  <div class="category-list">
+    <div class="text-center">
+      <h2>Choose Category</h2>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let category of categories$ | async"
+           [queryParams]="{category: category.id}"
+           [routerLink]="['/products']" class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h3>
+              {{category.name}}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

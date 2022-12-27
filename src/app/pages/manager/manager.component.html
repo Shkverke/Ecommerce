@@ -1,12 +1,26 @@
-<div class="d-flex gap-4">
-  <div class="sidebar">
-    <div class="list-group">
-      <a routerLink="/manager/products" routerLinkActive="active" class="list-group-item list-group-item-action">Products</a>
-      <a routerLink="/manager/categories" routerLinkActive="active" class="list-group-item list-group-item-action">Categories</a>
-    </div>
-  </div>
 
-  <div class="flex-fill">
-    <router-outlet></router-outlet>
-  </div>
+<div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active"
+              routerLink="/manager/products"
+              id="home-tab" data-bs-toggle="tab"
+              data-bs-target="#home" type="button"
+              role="tab" aria-controls="home"
+              aria-selected="true">Home</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link"
+              routerLink="/manager/categories"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile"
+              type="button" role="tab"
+              aria-controls="profile"
+              aria-selected="false">Profile</button>
+    </li>
+  </ul>
+    <div class="flex-fill">
+      <router-outlet></router-outlet>
+    </div>
 </div>
